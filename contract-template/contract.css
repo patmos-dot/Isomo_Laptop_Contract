@@ -1,0 +1,185 @@
+
+@page {
+  size: A4;
+  /* Top and bottom margins apply to every page, so page 2 also gets a top margin. */
+  margin: 31pt 0 10pt;
+}
+
+:root {
+  --paper: #fefffd;
+  --ink: #1b1f1d;
+  --heading: #404040;
+  --muted: #595b56;
+  --green: #8cc63e;
+  --blue: #1dafec;
+  --blue-tint: #ecf8fd;
+  --grey-tint: #f6f8f4;
+  --grey-line: #cdd3cb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  background: var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Times New Roman", Times, "Liberation Serif", serif;
+  font-size: 13pt;
+  line-height: 1.1;
+}
+
+.page {
+  width: 595.28pt;
+  padding: 0 38pt;
+}
+
+/* Header */
+.header {
+  position: relative;
+  height: 30pt;
+  border-bottom: 3pt solid var(--green);
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24pt;
+  height: 24pt;
+}
+
+.brand,
+.title {
+  position: absolute;
+  top: 1pt;
+  font-size: 15pt;
+  font-weight: bold;
+}
+
+.brand {
+  left: 32pt;
+  color: var(--heading);
+}
+
+.title {
+  left: 111pt;
+}
+
+/* Scholar details box. min-height keeps the sample's size; long values make it grow. */
+.details {
+  display: flex;
+  min-height: 79.8pt;
+  margin-top: 12pt;
+  padding: 1.7pt 11.3pt 0;
+  background: var(--blue-tint);
+  border: 0.7pt solid var(--blue);
+  font-size: 12pt;
+  break-inside: avoid;
+}
+
+.details-column {
+  flex: 0 0 256.6pt;
+  min-width: 0;
+}
+
+.details-right {
+  flex: 1;
+}
+
+.details p {
+  margin-bottom: 3pt;
+  overflow-wrap: anywhere;
+}
+
+/* Headings and terms */
+.section-title {
+  font-size: 14pt;
+  font-weight: bold;
+  color: var(--heading);
+  margin-bottom: 2.8pt;
+  break-after: avoid;
+}
+
+.section-title-muted {
+  color: var(--muted);
+}
+
+.terms {
+  margin-top: 5.9pt;
+}
+
+.intro {
+  margin-bottom: 8pt;
+}
+
+.term {
+  margin-bottom: 9pt;
+}
+
+/* Device condition box */
+.condition {
+  margin-top: 23.4pt;
+  min-height: 57.3pt;
+  padding: 1.4pt 11.3pt 4pt;
+  background: var(--grey-tint);
+  border: 0.7pt solid var(--grey-line);
+  line-height: 15pt;
+  break-inside: avoid;
+}
+
+.condition-title,
+.condition-status {
+  font-size: 13pt;
+  font-weight: bold;
+}
+
+.condition-title,
+.condition-problems {
+  color: var(--muted);
+}
+
+/* Keeps the scholar's line breaks and wraps very long words instead of overflowing. */
+.condition-problems {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* Acceptance and footer stay together: if they do not fit, both move to the next page. */
+.closing {
+  break-inside: avoid;
+}
+
+.acceptance {
+  margin-top: 4.4pt;
+}
+
+.signature {
+  margin-top: 6.8pt;
+  font-size: 12pt;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  margin-top: 3.4pt;
+  font-size: 12pt;
+  color: var(--muted);
+}
+
+.record {
+  padding-bottom: 7.3pt;
+  border-bottom: 0.6pt solid var(--grey-line);
+}
+
+.contact {
+  margin-top: 2pt;
+}

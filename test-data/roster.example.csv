@@ -1,0 +1,4 @@
+scholarId,fullName,isomoYear,highSchool,email
+TEST-0001,Test Scholar One,Year 3,Test Secondary School,test.scholar1@example.com
+0042,Test Scholar Two,Year 2,Sample High School,test.scholar2@example.com
+TEST-0003,Ange-Marie N'Test,Year 1,"École ""Test"" & Co.",test.scholar3@example.com

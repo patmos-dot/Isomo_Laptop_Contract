@@ -1,0 +1,187 @@
+/* Signing page. Dark by default, light when the toggle is used. System fonts only. */
+:root,
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #202326;
+  --surface-2: #2a2e31;
+  --text: #eceeed;
+  --muted: #a9afab;
+  --line: #3a3f43;
+  --accent: #8cc63e;
+  --accent-text: #11140f;
+  --focus: #1dafec;
+  --error: #ff8a80;
+  --error-bg: #3a2020;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f5f2;
+  --surface: #ffffff;
+  --surface-2: #eef1ec;
+  --text: #1b1f1d;
+  --muted: #595b56;
+  --line: #cdd3cb;
+  --accent: #4f7f17;
+  --accent-text: #ffffff;
+  --focus: #0b7fb0;
+  --error: #b3261e;
+  --error-bg: #fdecea;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.topbar {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.topbar-inner,
+.wrap {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.theme-toggle {
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  min-height: 36px;
+  cursor: pointer;
+}
+
+.wrap { padding-top: 24px; padding-bottom: 48px; }
+
+h1 { font-size: 1.75rem; line-height: 1.2; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; margin: 0 0 16px; }
+h3 { font-size: 1rem; margin: 20px 0 8px; }
+.lead { color: var(--muted); margin: 0 0 20px; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.message h1 { font-size: 1.4rem; }
+.message p { margin: 0 0 8px; }
+
+/* Details list */
+.details dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 12px 20px;
+  margin: 0 0 12px;
+}
+.details dt { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+.details dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+
+/* Fields */
+.field { margin: 0 0 20px; padding: 0; border: 0; min-width: 0; }
+.field:last-child { margin-bottom: 0; }
+label, legend { display: block; font-weight: 600; padding: 0; }
+.req, .opt { font-weight: 400; font-size: 0.8rem; color: var(--muted); margin-left: 6px; }
+.hint { color: var(--muted); font-size: 0.9rem; margin: 2px 0 8px; }
+
+input[type="text"],
+textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  min-height: 44px;
+}
+textarea { resize: vertical; }
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+  min-height: 44px;
+  padding: 8px 12px;
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.choice input { width: 20px; height: 20px; margin: 0; flex: none; accent-color: var(--accent); }
+.choice.agree { align-items: flex-start; }
+.choice.agree input { margin-top: 2px; }
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+.choice:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+[aria-invalid="true"] { border-color: var(--error); }
+.error { color: var(--error); font-size: 0.9rem; margin: 6px 0 0; }
+
+.alert {
+  background: var(--error-bg);
+  color: var(--text);
+  border: 1px solid var(--error);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 0 16px;
+}
+
+/* Contract text: scrolls inside its box so the form stays easy to reach. */
+.contract-text {
+  max-height: 22rem;
+  overflow-y: auto;
+  padding: 4px 12px 4px 0;
+  font-size: 0.95rem;
+}
+.contract-text p { margin: 0 0 12px; }
+
+.submit {
+  width: 100%;
+  font: inherit;
+  font-weight: 700;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  min-height: 48px;
+  margin-top: 8px;
+  cursor: pointer;
+}

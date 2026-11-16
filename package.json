@@ -1,0 +1,26 @@
+{
+  "name": "isomo-release-contract",
+  "version": "1.0.0",
+  "description": "Isomo scholar laptop release contract: personal signing links, signed PDF, and email.",
+  "scripts": {
+    "start": "node src/server.js",
+    "invite": "node scripts/send-invites.js",
+    "test-pdfs": "node scripts/make-test-pdfs.js",
+    "verify": "node scripts/verify-fingerprint.js",
+    "retry": "node scripts/retry.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "handlebars": "^4.7.10",
+    "nodemailer": "^10.3.1",
+    "puppeteer": "^25.16.0"
+  },
+  "type": "module",
+  "private": true,
+  "engines": {
+  "node": ">=22.13"
+  }
+}

@@ -1,0 +1,85 @@
+<h1>Laptop release contract</h1>
+<p class="lead">Check your details, answer four questions about your laptop, read the contract, then sign.</p>
+
+<section class="card details" aria-label="Your details">
+  <dl>
+    <div><dt>Scholar</dt><dd>{{scholar.fullName}}</dd></div>
+    <div><dt>Email</dt><dd>{{scholar.email}}</dd></div>
+    <div><dt>Isomo year</dt><dd>{{scholar.isomoYear}}</dd></div>
+    <div><dt>High school</dt><dd>{{scholar.highSchool}}</dd></div>
+  </dl>
+  <p class="hint">If any of these details are wrong, do not sign. Contact {{contactEmail}}.</p>
+</section>
+
+{{#if formError}}
+  <p class="alert" role="alert" id="form-error">{{formError}}</p>
+{{/if}}
+
+<form method="post" class="form" {{#if formError}}aria-describedby="form-error"{{/if}}>
+
+  <section class="card">
+    <h2>Your laptop</h2>
+
+    <div class="field">
+      <label for="serialNumber">Laptop serial number <span class="req">Required</span></label>
+      <p class="hint" id="serial-hint">Enter the serial number on the label under your laptop.</p>
+      <input id="serialNumber" name="serialNumber" type="text" required maxlength="{{limits.serialNumber}}"
+        autocomplete="off" autocapitalize="characters" spellcheck="false" value="{{answers.serialNumber}}"
+        aria-describedby="serial-hint{{#if errors.serialNumber}} serial-error{{/if}}" {{#if errors.serialNumber}}aria-invalid="true"{{/if}}>
+      {{#if errors.serialNumber}}<p class="error" id="serial-error">{{errors.serialNumber}}</p>{{/if}}
+    </div>
+
+    <fieldset class="field">
+      <legend>Laptop condition <span class="req">Required</span></legend>
+      <label class="choice"><input type="radio" name="condition" value="working-well" required {{#if (eq answers.condition "working-well")}}checked{{/if}}> Working well</label>
+      <label class="choice"><input type="radio" name="condition" value="working-with-problems" {{#if (eq answers.condition "working-with-problems")}}checked{{/if}}> Working with problems</label>
+      <label class="choice"><input type="radio" name="condition" value="not-working" {{#if (eq answers.condition "not-working")}}checked{{/if}}> Not working</label>
+      {{#if errors.condition}}<p class="error">{{errors.condition}}</p>{{/if}}
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Charger present <span class="req">Required</span></legend>
+      <label class="choice"><input type="radio" name="charger" value="yes" required {{#if (eq answers.charger "yes")}}checked{{/if}}> Yes</label>
+      <label class="choice"><input type="radio" name="charger" value="no" {{#if (eq answers.charger "no")}}checked{{/if}}> No</label>
+      {{#if errors.charger}}<p class="error">{{errors.charger}}</p>{{/if}}
+    </fieldset>
+
+    <div class="field">
+      <label for="problems">Problems <span class="opt">Optional</span></label>
+      <p class="hint" id="problems-hint">Describe any problems. Do not include passwords or personal information. Up to {{limits.problems}} characters.</p>
+      <textarea id="problems" name="problems" rows="4" maxlength="{{limits.problems}}"
+        aria-describedby="problems-hint{{#if errors.problems}} problems-error{{/if}}">{{answers.problems}}</textarea>
+      {{#if errors.problems}}<p class="error" id="problems-error">{{errors.problems}}</p>{{/if}}
+    </div>
+  </section>
+
+  <section class="card contract" aria-labelledby="contract-heading">
+    <h2 id="contract-heading">Contract terms</h2>
+    <div class="contract-text">
+      {{> terms}}
+      <h3>Electronic acceptance</h3>
+      {{> acceptance}}
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Sign</h2>
+
+    <div class="field">
+      <label for="signature">Full name <span class="req">Required</span></label>
+      <p class="hint" id="signature-hint">Type your full name. This is your electronic signature.</p>
+      <input id="signature" name="signature" type="text" required maxlength="{{limits.signature}}"
+        autocomplete="name" spellcheck="false" value="{{answers.signature}}"
+        aria-describedby="signature-hint{{#if errors.signature}} signature-error{{/if}}" {{#if errors.signature}}aria-invalid="true"{{/if}}>
+      {{#if errors.signature}}<p class="error" id="signature-error">{{errors.signature}}</p>{{/if}}
+    </div>
+
+    <div class="field">
+      <label class="choice agree"><input type="checkbox" name="agree" value="yes" required {{#if answers.agree}}checked{{/if}}>
+        I have read this entire contract and I agree to be bound by it.</label>
+      {{#if errors.agree}}<p class="error">{{errors.agree}}</p>{{/if}}
+    </div>
+
+    <button type="submit" class="submit">Sign contract</button>
+  </section>
+</form>

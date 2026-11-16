@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Isomo Laptop Release Contract {{contractId}}</title>
+  {{!-- Triple braces insert trusted text without escaping. Only our own CSS goes here, never form input. --}}
+  <style>{{{css}}}</style>
+</head>
+<body>
+  <main class="page">
+
+    <header class="header">
+      <img class="logo" src="{{{logoDataUri}}}" alt="">
+      <span class="brand">ISOMO</span>
+      <h1 class="title">ISOMO LAPTOP RELEASE CONTRACT</h1>
+    </header>
+
+    {{!-- Double braces escape the value, so < > & " ' print as text, never as HTML. --}}
+    <section class="details">
+      <div class="details-column">
+        <p>SCHOLAR: {{scholarName}}</p>
+        <p>Email: {{email}}</p>
+        <p>HIGH SCHOOL: {{highSchool}}</p>
+      </div>
+      <div class="details-column details-right">
+        <p>LAPTOP SERIAL NUMBER: {{serialNumber}}</p>
+        <p>ISOMO YEAR: {{isomoYear}}</p>
+        <p>SIGNED IN KIGALI: {{signedInKigali}}</p>
+      </div>
+    </section>
+
+    <section class="terms">
+      <h2 class="section-title">CONTRACT TERMS</h2>
+      {{> terms}}
+    </section>
+
+    <section class="condition">
+      <h2 class="condition-title">DEVICE CONDITION AT SIGNING</h2>
+      <p class="condition-status">{{conditionLabel}} | {{chargerLabel}}</p>
+      <p class="condition-problems">{{problemsLabel}}</p>
+    </section>
+
+    <div class="closing">
+    <section class="acceptance">
+      <h2 class="section-title section-title-muted">ELECTRONIC ACCEPTANCE</h2>
+      {{> acceptance}}
+      <p class="signature">Electronic signature: {{signature}}</p>
+    </section>
+
+    <footer class="footer">
+      <p class="record">Contract {{contractId}} | Version {{version}} | Revision {{revision}} | Fingerprint {{fingerprint}}</p>
+      <p class="contact">Questions or incident reports: Pacifique Micomyiza, Bridge2Rwanda Gikondo offices, pmicomyiza@bridge2rwanda.org, 0782555218</p>
+    </footer>
+    </div>
+
+  </main>
+</body>
+</html>
