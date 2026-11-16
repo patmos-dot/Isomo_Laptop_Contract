@@ -147,3 +147,17 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Generated contracts, the database, and any local data
+*.pdf
+*.db
+*.db-*
+*.eml
+data/
+output/
+
+# Real roster files, if one is ever placed here by mistake
+roster*.csv
+roster*.xlsx
+!test-data/*
+
